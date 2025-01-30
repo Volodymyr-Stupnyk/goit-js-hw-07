@@ -1,29 +1,21 @@
-class StringBuilder {
-  #value;
-  constructor(initialValue) {
-    this.#value = initialValue;
-  }
-  getValue() {
-    return this.#value
-  }
-  padEnd(str) {
-    this.#value += str;
-  }
-  padStart(str) {
-    this.#value = str + this.#value;
-  }
-  padBoth(str) {
-    this.#value = str + this.#value + str;
-  }
-}
+
+const inputElem = document.querySelector('#name-input');
+const outputElem = document.querySelector('#name-output');
+const titleElem = document.querySelector('h1');
+ 
+const divElement = document.createElement('div');  
+
+divElement.appendChild(inputElem);  
+divElement.appendChild(titleElem);
+ 
+document.body.appendChild(divElement);  
 
 
+titleElem.classList.add('js-title');
+inputElem.classList.add('js-input');
+divElement.classList.add('js-input-box');
 
-const builder = new StringBuilder(".");
-console.log(builder.getValue()); // "."
-builder.padStart("^");
-console.log(builder.getValue()); // "^."
-builder.padEnd("^");
-console.log(builder.getValue()); // "^.^"
-builder.padBoth("=");
-console.log(builder.getValue()); // "=^.^="
+inputElem.addEventListener('input', () => {   
+    const trimValue = inputElem.value.trim();
+    outputElem.textContent = trimValue.length > 0 ? trimValue : 'Ananymous';
+});

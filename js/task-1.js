@@ -1,30 +1,35 @@
-const customer = {
-  username: "Mango",
-  balance: 24000,
-  discount: 0.1,
-  orders: ["Burger", "Pizza", "Salad"],
-  // Change code below this line
-  getBalance() {
-    return this.balance;
-  },
-  getDiscount() {
-    return this.discount;
-  },
-  setDiscount(value) {
-    this.discount = value;
-  },
-  getOrders() {
-    return this.orders;
-  },
-  addOrder(cost, order) {
-    this.balance -= cost - cost * this.discount;
-    this.orders.push(order);
-  },
-  // Change code above this line
-};
+ 
+const categoriesList = document.querySelector('#categories');
 
-customer.setDiscount(0.15);
-console.log(customer.getDiscount()); // 0.15
-customer.addOrder(5000, "Steak");
-console.log(customer.getBalance()); // 19750
-console.log(customer.getOrders()); // ["Burger", "Pizza", "Salad", "Steak"]
+categoriesList.classList.add('js-my-categories')
+
+
+const uls = categoriesList.querySelectorAll('ul');  
+for (let i = 0; i < uls.length; i++) {
+    uls[i].classList.add('js-categories-list');
+}
+
+const jsItem = categoriesList.querySelectorAll('ul > li');
+for (let i = 0; i < jsItem.length; i++) {
+    jsItem[i].classList.add('js-item');
+}
+
+const titleCategories = categoriesList.querySelectorAll('h2');  
+for (let i = 0; i < titleCategories.length; i++) {
+    titleCategories[i].classList.add('js-title-categories');
+}
+
+const listItems = categoriesList.querySelectorAll('ul > li > ul > li');  
+for (let i = 0; i < listItems.length; i++) {  
+    listItems[i].classList.add('js-categorues-list-items'); 
+} 
+
+const categories = categoriesList.querySelectorAll('.item');  
+console.log(`Numder of categories: ${categories.length}`);  
+ 
+categories.forEach(category => {  
+    const title = category.querySelector('h2').textContent;
+    const itemsCount = category.querySelectorAll('ul li').length;
+    console.log(`Categories: ${title}, Elements: ${itemsCount}`);  
+});  
+
